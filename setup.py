@@ -1,4 +1,5 @@
 import weaviate
+import os
 import weaviate.classes as wvc
 from weaviate.connect import ConnectionParams
 from weaviate.classes.config import Property, DataType, Tokenization, Configure
@@ -13,7 +14,7 @@ client = weaviate.WeaviateClient(
         grpc_secure=False,
     ),
     additional_headers={
-        "X-OpenAI-Api-Key": "CHANGE_ME"
+        "X-OpenAI-Api-Key": os.environ.get("OPENAI_APIKEY")
     }
 )
 client.connect()
